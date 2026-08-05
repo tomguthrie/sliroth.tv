@@ -4,7 +4,7 @@
   --text: #f5f5f5;
   --muted: #a8aaac;
   --twitch: #a970ff;
-  --orange: #ff9f1c;
+  --orange: #e45a2d;
   --orange-hover: #ffbd66;
   --twitter: #1d9bf0;
   --youtube: #ff334f;
@@ -68,13 +68,13 @@ a {
   color: var(--orange);
   font-weight: 500;
   letter-spacing: -0.025em;
-  text-shadow: 0 0 0.45em rgb(255 159 28 / 12%);
+  text-shadow: 0 0 0.45em rgb(228 90 45 / 12%);
   transition: color 180ms ease, text-shadow 180ms ease;
 }
 
 .channel-link:hover .channel-name {
   color: var(--orange-hover);
-  text-shadow: 0 0 0.38em rgb(255 159 28 / 42%);
+  text-shadow: 0 0 0.38em rgb(228 90 45 / 42%);
 }
 
 .channel-link:focus-visible,
