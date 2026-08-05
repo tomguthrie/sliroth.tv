@@ -1,0 +1,198 @@
+:root {
+  color-scheme: dark;
+  --background: #151617;
+  --text: #f5f5f5;
+  --muted: #a8aaac;
+  --twitch: #a970ff;
+  --orange: #ff9f1c;
+  --orange-hover: #ffbd66;
+  --twitter: #1d9bf0;
+  --youtube: #ff334f;
+  --focus: #ffffff;
+  --content-gap: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 20rem;
+  background: var(--background);
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: "Google Sans Flex", "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+.landing {
+  display: flex;
+  min-height: 100vh;
+  min-height: 100svh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 7vw, 5rem) 1.25rem;
+  text-align: center;
+}
+
+.channel-heading {
+  margin: 0;
+  font-size: clamp(2.15rem, 8vw, 6.75rem);
+  font-weight: 200;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.channel-link {
+  display: inline-block;
+  border-radius: 0.12em;
+  text-decoration: none;
+}
+
+.channel-platform {
+  color: var(--twitch);
+}
+
+.channel-name {
+  color: var(--orange);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  text-shadow: 0 0 0.45em rgb(255 159 28 / 12%);
+  transition: color 180ms ease, text-shadow 180ms ease;
+}
+
+.channel-link:hover .channel-name {
+  color: var(--orange-hover);
+  text-shadow: 0 0 0.38em rgb(255 159 28 / 42%);
+}
+
+.channel-link:focus-visible,
+.social-link:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 0.22em;
+}
+
+.schedule {
+  margin-top: var(--content-gap);
+}
+
+.schedule h2 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.schedule p {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(0.88rem, 2vw, 1.05rem);
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+.schedule-time {
+  margin-left: 0.55em;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.social-links {
+  margin-top: var(--content-gap);
+}
+
+.social-links ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem clamp(1.25rem, 4vw, 2.5rem);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.social-link {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.25rem;
+  border-radius: 0.25rem;
+  color: var(--muted);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-weight: 500;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.28em;
+  transition: color 160ms ease, text-decoration-color 160ms ease;
+}
+
+.social-icon {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+  fill: currentcolor;
+}
+
+.twitter-link .social-icon {
+  color: var(--twitter);
+}
+
+.twitch-link .social-icon {
+  color: var(--twitch);
+}
+
+.youtube-link .social-icon {
+  color: var(--youtube);
+}
+
+.social-link:hover {
+  color: var(--text);
+  text-decoration-color: currentcolor;
+}
+
+@media (max-width: 37rem) {
+  .channel-heading {
+    letter-spacing: -0.035em;
+  }
+
+  .schedule p {
+    max-width: 22rem;
+  }
+
+  .schedule-time {
+    display: block;
+    margin-left: 0;
+  }
+
+  .social-links ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .channel-link,
+  .channel-name,
+  .social-link {
+    transition: none;
+  }
+}
