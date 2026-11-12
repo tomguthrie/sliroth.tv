@@ -9,6 +9,7 @@
   --twitter: #1d9bf0;
   --youtube: #ff334f;
   --focus: #ffffff;
+  --live: #ff4d4d;
   --content-gap: clamp(1.75rem, 4vw, 2.75rem);
 }
 
@@ -61,7 +62,7 @@ a {
 }
 
 .channel-platform {
-  color: var(--twitch);
+  color: var(--muted);
 }
 
 .channel-name {
@@ -78,6 +79,8 @@ a {
 }
 
 .channel-link:focus-visible,
+.schedule-link:focus-visible,
+.live-link:focus-visible,
 .social-link:focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 0.22em;
@@ -113,6 +116,62 @@ a {
   margin-left: 0.55em;
   color: var(--text);
   white-space: nowrap;
+}
+
+.schedule-slot {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.schedule-link,
+.live-link {
+  grid-area: 1 / 1;
+  border-radius: 0.25rem;
+  text-decoration: none;
+}
+
+/* Hidden with visibility rather than display, so each keeps its space and leaves the tab order. */
+.live-link,
+.is-live .schedule-link {
+  visibility: hidden;
+}
+
+.is-live .live-link {
+  visibility: visible;
+}
+
+.schedule-link p {
+  transition: color 160ms ease;
+}
+
+.schedule-link:hover p {
+  color: var(--text);
+}
+
+.live-link {
+  color: var(--text);
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+.live-link::before {
+  content: "";
+  display: inline-block;
+  width: 0.55em;
+  height: 0.55em;
+  margin-right: 0.6em;
+  border-radius: 50%;
+  background: var(--live);
+  box-shadow: 0 0 0.5em rgb(255 77 77 / 60%);
+  vertical-align: 0.08em;
+}
+
+.live-link::after {
+  content: " ›";
 }
 
 .social-links {
@@ -170,8 +229,21 @@ a {
 }
 
 @media (max-width: 37rem) {
+  :root {
+    --content-gap: 2.75rem;
+  }
+
+  /* "sliroth" gets its own line and fills the width; "twitch.tv/" sits small above it. */
   .channel-heading {
+    font-size: 24vw;
     letter-spacing: -0.035em;
+    line-height: 0.95;
+  }
+
+  .channel-platform {
+    display: block;
+    font-size: 0.36em;
+    letter-spacing: -0.03em;
   }
 
   .schedule p {
@@ -183,15 +255,25 @@ a {
     margin-left: 0;
   }
 
+  /* Icons alone fit in one row; each link keeps its name through aria-label. */
   .social-links ul {
-    flex-direction: column;
-    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .social-link span {
+    display: none;
+  }
+
+  .social-icon {
+    width: 1.75rem;
+    height: 1.75rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .channel-link,
   .channel-name,
+  .schedule-link p,
   .social-link {
     transition: none;
   }

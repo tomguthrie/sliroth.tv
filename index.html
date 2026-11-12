@@ -32,7 +32,22 @@
 
       <section class="schedule" aria-labelledby="schedule-heading">
         <h2 id="schedule-heading">Live schedule</h2>
-        <p>Tue <span aria-hidden="true">·</span> Wed <span aria-hidden="true">·</span> Fri <span aria-hidden="true">·</span> Sat <span aria-hidden="true">·</span> Sun <span class="schedule-time">at 7 PM UK time</span></p>
+        <div class="schedule-slot">
+          <a
+            class="schedule-link"
+            href="https://twitch.tv/sliroth/schedule"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <p>Tue <span aria-hidden="true">·</span> Wed <span aria-hidden="true">·</span> Fri <span aria-hidden="true">·</span> Sat <span aria-hidden="true">·</span> Sun <span class="schedule-time">at 7 PM UK time</span></p>
+          </a>
+          <a
+            class="live-link"
+            href="https://twitch.tv/sliroth"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Live now</a>
+        </div>
       </section>
 
       <nav class="social-links" aria-label="Social links">
@@ -82,5 +97,16 @@
         </ul>
       </nav>
     </main>
+    <script type="module">
+      try {
+        const response = await fetch('https://overcue.tv/api/public/channels/sliroth/schedule');
+        const { live } = response.ok ? await response.json() : {};
+        if (live) {
+          document.querySelector('.schedule-slot').classList.add('is-live');
+        }
+      } catch {
+        // Keep the schedule.
+      }
+    </script>
   </body>
 </html>
